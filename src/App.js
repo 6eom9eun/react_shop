@@ -8,8 +8,6 @@ import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import data from './data.js'
 import Detail from './routes/detail.js'
 
-
-
 function App(){
 
   let [shoes] = useState(data)
