@@ -44,7 +44,7 @@ function App(){
         </>
         }></Route>
 
-        <Route path="/detail" element={<Detail/>}></Route>
+        <Route path="/detail/:id" element={<Detail shoes={shoes}/>}></Route>
               
       <Route path="/about" element={ <About/> } >  
         <Route path="frontend" element={ <div>프론트엔드</div> } />
