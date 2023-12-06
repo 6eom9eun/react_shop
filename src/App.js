@@ -7,10 +7,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 import data from './data.js'
 import Detail from './routes/detail.js'
+import axios from 'axios' // AJAX 라이브러리
 
 function App(){
 
-  let [shoes] = useState(data)
+  let [shoes, setShoes] = useState(data)
   let navigate = useNavigate();
 
   return (
@@ -39,6 +40,17 @@ function App(){
               }
             </div>
           </div>
+          <button onClick={()=>{
+            axios.get('https://codingapple1.github.io/shop/data2.json').then((rs)=>{
+              console.log(rs.data);
+              let copy = [...shoes, ...rs.data];
+              setShoes(copy);
+            }) 
+
+            // Promise.all([ axios.get('/url1'), axios.get('/url2') ]).then((rs)={}) // 동시에 여러 ajax 요청
+            // axios.post('/abcde', {name : 'kim'}) // 서버로 데이터 전송
+          
+          }}>더보기</button>
         </>
         }></Route>
 
@@ -51,7 +63,6 @@ function App(){
 
         <Route path="*" element={<div>없는페이지</div>}></Route>
       </Routes>
-
 
     </div>
   )
